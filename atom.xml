@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cclouds.me/"/>
-  <updated>2017-08-21T05:31:39.013Z</updated>
+  <updated>2018-01-26T05:25:34.153Z</updated>
   <id>http://www.cclouds.me/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>更换电脑怎么部署hexo</title>
+    <link href="http://www.cclouds.me/2018/01/26/%E6%9B%B4%E6%8D%A2%E7%94%B5%E8%84%91%E6%80%8E%E4%B9%88%E9%83%A8%E7%BD%B2hexo/"/>
+    <id>http://www.cclouds.me/2018/01/26/更换电脑怎么部署hexo/</id>
+    <published>2018-01-26T05:12:36.000Z</published>
+    <updated>2018-01-26T05:25:34.153Z</updated>
+    
+    <content type="html"><![CDATA[<p>##更换电脑怎么部署hexo</p><h2 id="安装前提软件"><a href="#安装前提软件" class="headerlink" title="安装前提软件"></a>安装前提软件</h2><p><a href="https://nodejs.org/en" target="_blank" rel="noopener">Node.js</a>:</p><p><a href="http://git-scm.com/download" target="_blank" rel="noopener">Git客户端</a>:</p><h3 id="登录Github帐号"><a href="#登录Github帐号" class="headerlink" title="登录Github帐号"></a>登录Github帐号</h3><p>进入<a href="https://github.com/" target="_blank" rel="noopener">Github</a>进行登录</p><p>输入以下指令（邮箱就是你注册Github时候的邮箱）后，回车，出现提示让你输入的时候直接回车如下图所示：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;272148451@qq.com&quot;</span><br></pre></td></tr></table></figure><p> <img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/45274266.jpg" alt=""></p><p>然后输入以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent -s</span><br></pre></td></tr></table></figure><p>继续输入指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><p>如果出现这样的错误</p><p>  <img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/36345976.jpg" alt=""></p><p>输入以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval `ssh-agent -s`</span><br><span class="line">ssh-add</span><br></pre></td></tr></table></figure><p>然后到c/Users/cclouds/.shh/id_rsa拷贝SSH Key</p><p>进入Github里面，点击右上角的设置图标Settings,找到SSH and GPG keys,选择New SSH key</p><p>title随便取 key粘贴刚才的SSH</p><p><img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/75172318.jpg" alt=""></p><h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>输入安装hexo命令：npm install -g hexo</p><h3 id="需要拷贝到新电脑的文件"><a href="#需要拷贝到新电脑的文件" class="headerlink" title="需要拷贝到新电脑的文件"></a>需要拷贝到新电脑的文件</h3><p>首先是之前自己修改的文件，像站点配置_config.yml，theme文件夹里面的主题，以及source里面自己写的博客文件，这些肯定要拷贝的。除此之外，还有三个文件需要有，就是scaffolds文件夹（文章的模板）、package.json（说明使用哪些包）和.gitignore（限定在提交的时候哪些文件可以忽略）。其实，这三个文件不是我们修改的，所以即使丢失了，也没有关系，我们可以建立一个新的文件夹，然后在里面执行hexo init，就会生成这三个文件，我们只需要将它们拷贝过来使用即可。总结：_config.yml，theme/，source/，scaffolds/，package.json，.gitignore，是需要拷贝的。</p><h3 id="不需要拷贝到新电脑的文件"><a href="#不需要拷贝到新电脑的文件" class="headerlink" title="不需要拷贝到新电脑的文件"></a>不需要拷贝到新电脑的文件</h3><p>首先是.git文件，无论是在站点根目录下，还是主题目录下的.git文件，都可以删掉。然后是文件夹node_modules（在用npm install会重新生成），public（这个在用hexo g时会重新生成），.deploy_git文件夹（在使用hexo d时也会重新生成），db.json文件。其实上面这些文件也就是.gitignore文件里面记载的可以忽略的内容。总结：.git/，node_modules/，public/，.deploy_git/，db.json文件不需要拷贝。</p><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>在git bash中切换目录到新拷贝的文件夹里，使用 npm install 命令，进行模块安装。很明显我们这里没用hexo init初始化，因为有的文件我们已经拷贝生成过来了，所以不必用hexo init去整体初始化，如果不慎在此时用了hexo init，则站点的配置文件_config.yml里面内容会被清空使用默认值，所以这一步一定要慎重，不要用hexo init。</p><h3 id="安装其他组件"><a href="#安装其他组件" class="headerlink" title="安装其他组件"></a>安装其他组件</h3><p>安装其他的一些必要组件，如果在node_modules里面有的，就不要重复安装了：<br>（1）为了使用hexo d来部署到git上，需要安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></p><p>npm install hexo-deployer-git –save<br>（2）为了建立RSS订阅，需要安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure></p><p>（3）为了建立站点地图，需要安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure></p><p>使用hexo g，然后使用hexo d进行部署，如果都没有出错，就转移成功了！</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##更换电脑怎么部署hexo&lt;/p&gt;
+&lt;h2 id=&quot;安装前提软件&quot;&gt;&lt;a href=&quot;#安装前提软件&quot; class=&quot;headerlink&quot; title=&quot;安装前提软件&quot;&gt;&lt;/a&gt;安装前提软件&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://nodejs.org/en&quot; 
+      
+    
+    </summary>
+    
+    
+      <category term="hexo系列" scheme="http://www.cclouds.me/tags/hexo%E7%B3%BB%E5%88%97/"/>
+    
+  </entry>
   
   <entry>
     <title>Java集合大纲</title>
