@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://or5xsfurn.bkt.clouddn.com/18-5-4/82360081.jpg">
 <meta property="og:image" content="http://or5xsfurn.bkt.clouddn.com/18-5-4/65817238.jpg">
 <meta property="og:image" content="http://or5xsfurn.bkt.clouddn.com/18-5-4/40444312.jpg">
-<meta property="og:updated_time" content="2018-05-04T09:51:12.378Z">
+<meta property="og:updated_time" content="2018-05-17T09:22:30.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Otter单向同步搭建">
 <meta name="twitter:description" content="1 环境虚拟机A ：192.168.1.247 虚拟机B ：192.168.1.206 系统：Centos6.5 JDK：OpenJDK 1.8.0（A、B都要安装） DB：MySQL 5.7.20，TIDB ZooKeeper：3.4.11（只装A机） Otter Manager：4.2.14 （只装A机） Otter Node：4.2.14（A、B都要安装） Aria2: （A、B都要安装）">
@@ -175,7 +175,7 @@
 <p>密码为图片标红的</p>
 <p><strong>登陆MySQL并修改root密码</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">msql&gt;alter user &apos;root&apos;@&apos;localhost&apos; identified by &apos;zzjr#2015&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line"></span><br><span class="line">msyql&gt;update user set user.Host=&apos;%&apos; where user.User=&apos;root&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt;flush privileges;</span><br><span class="line"></span><br><span class="line">mysql&gt;quit</span><br></pre></td></tr></table></figure>
-<p><strong>修改配置文件</strong><br>vi /etc/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">character-set-server=utf8</span><br><span class="line">log-bin=mysql-bin  </span><br><span class="line">binlog-format=ROW  </span><br><span class="line">server-id=1 #A,B需要设置成不一样的id</span><br></pre></td></tr></table></figure></p>
+<p><strong>修改配置文件</strong><br>vi /etc/my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">character-set-server=utf8</span><br><span class="line">log-bin=mysql-bin  </span><br><span class="line">binlog-format=ROW</span><br></pre></td></tr></table></figure></p>
 <p><strong>重新登录mysql</strong></p>
 <h3 id="1-3-安装配置zookeeper"><a href="#1-3-安装配置zookeeper" class="headerlink" title="1.3 安装配置zookeeper"></a>1.3 安装配置zookeeper</h3><p><strong>解压</strong></p>
 <p>tar zxvf zookeeper-3.4.11.tar.gz -C /usr/local/otter/</p>
@@ -252,7 +252,7 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2018/05/04/mydumper与myloader安装与使用/" title="mydumper与loader安装与使用">
+ <a href="/2018/05/04/mydumper与loader安装与使用/" title="mydumper与loader安装与使用">
   <strong>上一篇：</strong><br/>
   <span>
   mydumper与loader安装与使用</span>
@@ -320,11 +320,11 @@
 			
 		
 			
-				<li><a href="/tags/MyCat/" title="MyCat">MyCat<sup>1</sup></a></li>
+				<li><a href="/tags/Otter/" title="Otter">Otter<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Otter/" title="Otter">Otter<sup>1</sup></a></li>
+				<li><a href="/tags/MyCat/" title="MyCat">MyCat<sup>1</sup></a></li>
 			
 		
 			
