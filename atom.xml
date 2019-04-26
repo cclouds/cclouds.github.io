@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.cclouds.me/"/>
-  <updated>2018-05-07T03:17:45.259Z</updated>
+  <updated>2019-04-26T02:27:43.404Z</updated>
   <id>http://www.cclouds.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HashSet和TreeSet的区别</title>
+    <link href="http://www.cclouds.me/2019/04/26/HashSet%E5%92%8CTreeSet%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://www.cclouds.me/2019/04/26/HashSet和TreeSet的区别/</id>
+    <published>2019-04-26T02:25:07.000Z</published>
+    <updated>2019-04-26T02:27:43.404Z</updated>
+    
+    <content type="html"><![CDATA[<p>##HashSet</p><p>HashSet有以下特点</p><p>###1.不能保证元素的排列顺序，顺序有可能发生变化</p><p>###2. 不是同步的</p><p>###3. 集合元素可以是null,但只能放入一个null</p><p>当向HashSet集合中存入一个元素时，HashSet会调用该对象的hashCode()方法来得到该对象的hashCode值，然后根据 hashCode值来决定该对象在HashSet中存储位置。</p><p>简单的说，HashSet集合判断两个元素相等的标准是两个对象通过equals方法比较相等，并且两个对象的hashCode()方法返回值相 等</p><p>注意，如果要把一个对象放入HashSet中，重写该对象对应类的equals方法，也应该重写其hashCode()方法。其规则是如果两个对 象通过equals方法比较返回true时，其hashCode也应该相同。另外，对象中用作equals比较标准的属性，都应该用来计算 hashCode的值。</p><p>##TreeSet类</p><p>TreeSet是SortedSet接口的唯一实现类，TreeSet可以确保集合元素处于排序状态。TreeSet支持两种排序方式，自然排序 和定制排序，其中自然排序为默认的排序方式。向TreeSet中加入的应该是同一个类的对象。</p><p>TreeSet判断两个对象不相等的方式是两个对象通过equals方法返回false，或者通过CompareTo方法比较没有返回0</p><p>自然排序</p><p>自然排序使用要排序元素的CompareTo（Object obj）方法来比较元素之间大小关系，然后将元素按照升序排列。</p><p>Java提供了一个Comparable接口，该接口里定义了一个compareTo(Object obj)方法，该方法返回一个整数值，实现了该接口的对象就可以比较大小。</p><p>obj1.compareTo(obj2)方法如果返回0，则说明被比较的两个对象相等，如果返回一个正数，则表明obj1大于obj2，如果是 负数，则表明obj1小于obj2。</p><p>如果我们将两个对象的equals方法总是返回true，则这两个对象的compareTo方法返回应该返回0</p><p>定制排序</p><p>自然排序是根据集合元素的大小，以升序排列，如果要定制排序，应该使用Comparator接口，实现 int compare(T o1,T o2)方法。</p><h3 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h3><p>####1、TreeSet 是二差树实现的,Treeset中的数据是自动排好序的，不允许放入null值。 </p><p>####2、HashSet 是哈希表实现的,HashSet中的数据是无序的，可以放入null，但只能放入一个null，两者中的值都不能重复，就如数据库中唯一约束。 </p><p>####3、HashSet要求放入的对象必须实现HashCode()方法，放入的对象，是以hashcode码作为标识的，而具有相同内容的 String对象，hashcode是一样，所以放入的内容不能重复。但是同一个类的对象可以放入不同的实例 。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;##HashSet&lt;/p&gt;
+&lt;p&gt;HashSet有以下特点&lt;/p&gt;
+&lt;p&gt;###1.不能保证元素的排列顺序，顺序有可能发生变化&lt;/p&gt;
+&lt;p&gt;###2. 不是同步的&lt;/p&gt;
+&lt;p&gt;###3. 集合元素可以是null,但只能放入一个null&lt;/p&gt;
+&lt;p&gt;当向HashSet集
+      
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="http://www.cclouds.me/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>mydumper与loader安装与使用</title>
@@ -461,29 +489,6 @@
       
         &lt;p&gt;Jacman是一款为Hexo打造的一款扁平化，有着响应式设计的主题&lt;/p&gt;
 &lt;h2 id=&quot;安装主题&quot;&gt;&lt;a href=&quot;#安装主题&quot; class=&quot;headerlink&quot; title=&quot;安装主题&quot;&gt;&lt;/a&gt;安装主题&lt;/h2&gt;&lt;p&gt;$ git clone &lt;a href=&quot;
-      
-    
-    </summary>
-    
-    
-      <category term="hexo系列" scheme="http://www.cclouds.me/tags/hexo%E7%B3%BB%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo+github个人博客搭建</title>
-    <link href="http://www.cclouds.me/2017/04/28/hexo-github%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    <id>http://www.cclouds.me/2017/04/28/hexo-github个人博客搭建/</id>
-    <published>2017-04-28T03:18:20.000Z</published>
-    <updated>2018-01-26T03:19:55.919Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="hexo-github个人博客搭建"><a href="#hexo-github个人博客搭建" class="headerlink" title="hexo+github个人博客搭建"></a>hexo+github个人博客搭建</h2><h2 id="安装前提软件"><a href="#安装前提软件" class="headerlink" title="安装前提软件"></a>安装前提软件</h2><p><a href="https://nodejs.org/en" target="_blank" rel="noopener">Node.js</a>:</p><p><a href="http://git-scm.com/download" target="_blank" rel="noopener">Git客户端</a>:</p><h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><p>hexo常用的命令：<br>hexo g #完整命令为hexo generate,用于生成静态文件<br>hexo s #完整命令为hexo server,用于启动服务器，主要用来本地预览<br>hexo d #完整命令为hexo deploy,用于将本地文件发布到github上<br>hexo n #完整命令为hexo new,用于新建一篇文章</p><p>输入安装hexo命令：npm install -g hexo</p><p>安装完成后，在你喜爱的文件夹下（如E:\Hexo），执行以下指令(在E:\Hexo内点击鼠标右键，选择Git Bash)，Hexo 即会自动在目标文件夹建立网站所需要的所有文件。<br>输入命令：hexo init</p><p>安装依赖包：npm install</p><p>在E:\hexo内执行以下命令：<br>hexo g<br>hexo s</p><p>然后用浏览器访问<a href="http://localhost:4000，" target="_blank" rel="noopener">http://localhost:4000，</a> 此时，你应该看到了一个漂亮的博客</p><h3 id="注册Github帐号"><a href="#注册Github帐号" class="headerlink" title="注册Github帐号"></a>注册Github帐号</h3><p>进入<a href="https://github.com/" target="_blank" rel="noopener">Github</a>进行注册</p><h3 id="创建repository"><a href="#创建repository" class="headerlink" title="创建repository"></a>创建repository</h3><p>首先，登陆进入<a href="https://github.com/" target="_blank" rel="noopener">Github</a>，并进入个人页面，选择<code>repositorie，然后New一个</code>repository</p><p> <img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/16376233.jpg" alt=""></p><h3 id="部署本地文件到github"><a href="#部署本地文件到github" class="headerlink" title="部署本地文件到github"></a>部署本地文件到github</h3><p>编辑E：\hexo下的_config.yml文件，建议使用Notepad++。<br>在_config.yml最下方，添加如下配置(命令中的第一个cclouds为Github的用户名,第二个cclouds为之前New的Repository的名字,hexo的配置文件中任何’:’后面都是带一个空格的)</p><p>deploy:<br>  type: git<br>  repository: <a href="https://github.com/cclouds/cclouds.github.io.git" target="_blank" rel="noopener">https://github.com/cclouds/cclouds.github.io.git</a><br>  branch: master</p><p>配置_config.yml并保存,然后配置SSH</p><p>输入以下指令（邮箱就是你注册Github时候的邮箱）后，回车，出现提示让你输入的时候直接回车如下图所示：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;272148451@qq.com&quot;</span><br></pre></td></tr></table></figure><p> <img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/45274266.jpg" alt=""></p><p>然后输入以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-agent -s</span><br></pre></td></tr></table></figure><p>继续输入指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><p>如果出现这样的错误</p><p>  <img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/36345976.jpg" alt=""></p><p>输入以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval `ssh-agent -s`</span><br><span class="line">ssh-add</span><br></pre></td></tr></table></figure><p>然后到c/Users/cclouds/.shh/id_rsa拷贝SSH Key</p><p>进入Github里面，点击右上角的设置图标Settings,找到SSH and GPG keys,选择New SSH key</p><p>title随便取 key粘贴刚才的SSH</p><p><img src="http://or5xsfurn.bkt.clouddn.com/18-1-26/75172318.jpg" alt=""></p><p>执行以下命令部署到Github上。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>如果执行hexo d命令报错：</p><p>就先安装一下hexo-deployer-git这个模块：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure><p>安装好了继续执行<code>hexo d</code>部署命令，输入gitHub的账号密码，就可以访问了。我的是：cclouds.github.io</p><h3 id="发表一篇文章"><a href="#发表一篇文章" class="headerlink" title="发表一篇文章"></a>发表一篇文章</h3><p>1.在Git Bash执行命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;my new post&quot;</span><br></pre></td></tr></table></figure><p>2.在E:\hexo\source_post中打开my-new-post.md，打开方式使用记事本或者其他文本工具。<br>hexo中写文章使用的是Markdown，这里推荐使用typora这个工具</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: my new post #可以改成中文的，如“新文章”</span><br><span class="line">date: 2017-04-27 16:04:09 #发表日期，一般不改动</span><br><span class="line">categories: blog #文章文类</span><br><span class="line">tags: [文章] #文章标签，多于一项时用这种格式，只有一项时使用tags: blog</span><br><span class="line">---</span><br><span class="line">#这里是正文，用markdown写，你可以选择写一段显示在首页的简介后，加上</span><br><span class="line">&lt;!--more--&gt;，在&lt;!--more--&gt;之前的内容会显示在首页，之后的内容会被隐藏，当游客点击Read more才能看到。</span><br></pre></td></tr></table></figure><p>写完文章后，你可以使用1.hexo g生成静态文件。2.hexo s在本地预览效果。3.hexo d同步到github，然后使用<a href="http://cclouds.github.io" target="_blank" rel="noopener">http://cclouds.github.io</a> 进行访问</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;hexo-github个人博客搭建&quot;&gt;&lt;a href=&quot;#hexo-github个人博客搭建&quot; class=&quot;headerlink&quot; title=&quot;hexo+github个人博客搭建&quot;&gt;&lt;/a&gt;hexo+github个人博客搭建&lt;/h2&gt;&lt;h2 id=&quot;安装前提软
       
     
     </summary>
